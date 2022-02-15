@@ -39,7 +39,7 @@ export default {
       <button v-on:click="deleteCartedProduct(cartedProduct)">Delete</button>
       ---------------------------------
     </div>
-    <button>Order</button>
+    <button v-if="cartedProducts.length > 0">Order</button>
   </div>
 </template>
 

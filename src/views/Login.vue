@@ -6,6 +6,7 @@ export default {
     return {
       newSessionParams: {},
       errors: [],
+      httpStatus: "",
     };
   },
   methods: {
@@ -15,6 +16,7 @@ export default {
         .then((response) => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("flashMessage", "Logged In!");
           this.$router.push("/");
         })
         .catch((error) => {
@@ -22,6 +24,7 @@ export default {
           this.errors = ["Invalid email or password."];
           this.email = "";
           this.password = "";
+          this.httpStatus = error.response.status;
         });
     },
   },
@@ -34,6 +37,7 @@ export default {
       <h1>Login</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+        <img v-if="this.httpStatus" v-bind:src="`https://http.cat/${this.httpStatus}`" alt="" />
       </ul>
       <div>
         <label>Email:</label>

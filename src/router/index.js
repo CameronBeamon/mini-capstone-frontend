@@ -4,6 +4,7 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import show from "../views/showProduct.vue";
 import cart from "../views/Cart.vue";
+import Logout from "../views/Logout.vue";
 
 const routes = [
   {
@@ -23,6 +24,7 @@ const routes = [
   { path: "/signup", name: "signup", component: Signup },
   { path: "/product/:id", name: "showProduct", component: show },
   { path: "/cart", name: "cart", component: cart },
+  { path: "/logout", name: "logout", component: Logout },
 ];
 
 const router = createRouter({
